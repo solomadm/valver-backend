@@ -1,0 +1,265 @@
+@font-face{
+    font-family:'Futura-Medium';
+    src: url('/public/fonts/futura-medium.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'AvenirNext-Bold';
+    src: url('/public/fonts/AvenirNext-Bold.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'AvenirNext-Medium';
+    src: url('/public/fonts/AvenirNext-Medium.ttf') format('truetype');
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    padding-top: 89px;
+    font-family:'AvenirNext-Medium';
+}
+
+nav.navbar{
+    background: #b16cd1;
+    color: #ffffff;
+    height: 89px;
+}
+
+nav.navbar a,
+nav.navbar a:link,
+nav.navbar a:visited{
+    color: #ffffff;
+    background: #b16cd1;
+}
+
+nav.navbar a.navbar-brand{
+    font-family: 'Futura-Medium';
+    font-size: 54px;
+    font-weight: 500;
+    padding-top: 30px;
+    padding-left: 0;
+}
+
+nav.navbar a.navbar-brand:hover{
+    color: #f8e8ff;
+}
+
+nav.navbar ul > li > a:hover {
+    color: #780dab;
+}
+
+ul.navbar-nav{
+    margin-top: 25px;
+}
+
+ul.navbar-nav > li{
+    margin-right: 21px;
+}
+
+ul.navbar-nav > li a{
+    font-size: 25px;
+    padding: 10px 15px;
+}
+
+nav.navbar ul.navbar-nav .open > a {
+    background: #b16cd1;
+    color: #780dab;
+}
+
+ul.navbar-nav > li > a.active{
+    font-family:'AvenirNext-Bold';
+    font-weight: 600;
+}
+
+ul.navbar-nav li ul.dropdown-menu{
+    background: #bf75e2;
+}
+
+ul.navbar-nav li ul.dropdown-menu a{
+    background: #bf75e2;
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
+ul.navbar-nav li ul.dropdown-menu a:hover{
+    background: #b16cd1;
+}
+
+.height-100{
+    height: 100%;
+}
+
+.landing-section{
+    background: #b16cd1;
+}
+
+.landing-section .container{
+    height: 100%;
+    padding-top: 3%;
+    padding-bottom: 4%;
+}
+
+.search-box{
+    float: left;
+    margin-top: 24px;
+    margin-left: 10%;
+    position: relative;
+}
+
+.search-box i{
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    color: #757575;
+    font-size: 25px;
+}
+
+.search-box input{
+    width: 407px;
+    height: 45px;
+    border-radius: 24px;
+    border: 1px solid #cccccc;
+    font-size: 19px;
+    padding-left: 46px;
+    color: #333;
+    font-weight: 600;
+    outline: 0;
+}
+
+.mobile-phone-img-box{
+    background: url(../images/site-images/i-phone-7-img.png) no-repeat center center;
+    height: 100%;
+    background-size: contain;
+    position: relative;
+}
+
+.iphone-img-box {
+    text-align: center;
+}
+
+.iphone-img-box img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.landing-texts-box{
+    position: absolute;
+    bottom: 40%;
+    right: 0%;
+}
+
+.landing-texts-box h1.coming-soon {
+    margin: 0 0 15px;
+    color: #ffffff;
+    font-size: 6.5em;
+    text-align: right;
+}
+
+.app-stores-box{
+    text-align: right;
+}
+
+.app-stores-box > div {
+    display: inline-block;
+    width: 32%;
+}
+
+.app-stores-box > div:first-child {
+    margin-right: 3%;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.app-stores-box img{
+    max-width: 100%;
+    height: auto;
+}
+
+.apple-store {
+    /*background: url(../images/site-images/Download_on_the_App_Store_Badge_US-UK.png) no-repeat center;*/
+    /*background-size: contain;*/
+}
+
+.google-play-store{
+    /*background: url(../images/site-images/download_on_google_play.png) no-repeat center;*/
+    /*background-size: contain;*/
+}
+
+.register-form-box{
+    background: #ffffff;
+    padding: 25px 35px;
+    border-radius: 25px;
+}
+
+.register-form-box input{
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.register-form-box input:focus{
+    border-color: #780dab;
+    box-shadow: none;
+}
+
+.register-form-box h1{
+    color: #333;
+    margin-bottom: 35px;
+}
+
+.register-form-box label{
+    color: #bdbdbe;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.register-phone-box{
+    height: 100%;
+    text-align: center;
+}
+
+.register-phone-box img{
+    max-height: 100%;
+    width: auto;
+}
+
+.register-form-box .btn-send{
+    background: #00ffc6;
+    color: #ffffff;
+    font-size: 20px;
+    width: 59%;
+    padding: 15px 0px;
+    border-radius: 30px;
+    border: 0;
+    font-weight: 600;
+    margin-top: 35px;
+    transition: background 0.3s ease;
+}
+
+.register-form-box .btn-send:hover{
+    background: #00d8aa;
+}
+
+.forgot-password-box{
+    text-align: center;
+}
+
+.forgot-password-box a{
+    color: #333;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.forgot-password-box a:hover{
+    text-decoration: none;
+}

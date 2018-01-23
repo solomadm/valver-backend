@@ -1,0 +1,67 @@
+<section class="height-100 landing-section">
+    <div class="container">
+        
+        <div class="mobile-phone-img-box">
+            <div class="landing-texts-box">
+
+                <h1 class="coming-soon">
+                    Coming soon!
+                </h1>
+
+                <div class="app-stores-box">
+                    <div class="apple-store">
+                        <a href="#">
+                            <img src="/public/images/site-images/Download_on_the_App_Store_Badge_US-UK.png" alt="">
+                        </a>
+                    </div>
+                    <div class="google-play-store">
+                        <a href="#">
+                            <img src="/public/images/site-images/download_on_google_play.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 user-temp-data hidden">
+            <pre></pre>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    $.ajax({
+        method: 'GET',
+        url: '/api/user/' + getLoggedUserId(),
+        headers: {
+            'Authorization': getAuthHeader()
+        }
+    })
+        .done(function(data) {
+            console.log('data ', data);
+            $('.user-temp-data').removeClass('hidden');
+            $('.user-temp-data pre').html(JSON.stringify(data, undefined, 2));
+
+            setUserData(data.user);
+        })
+        .fail(function(err) {
+            console.log('err ', err);
+            localStorage.clear();
+            window.location.assign = '/web/landing';
+        })
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

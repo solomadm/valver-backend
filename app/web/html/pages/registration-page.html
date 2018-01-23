@@ -1,0 +1,128 @@
+<section class="height-100 landing-section">
+    <div class="container">
+
+        <div class="col-md-6 register-phone-box">
+            <!--<div class="register-phone-box">-->
+                <img src="/public/images/site-images/register-phone.png" alt="">
+            <!--</div>-->
+        </div>
+
+        <div class="col-lg-5 col-md-6">
+
+            <div class="register-form-box">
+
+                <h1>Request Membership</h1>
+
+                <form id="registrationForm">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number</label>
+                        <input type="text" class="form-control" id="mobileNumber">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="text" class="form-control" id="birthday">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invitationCode">Invitation Code (Optional)</label>
+                        <input type="text" class="form-control" id="invitationCode">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-default btn-send">
+                            Send
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-md-12 errors-block hidden">
+            <h3>Errors:</h3>
+            <pre></pre>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function composeRegistrationData()
+    {
+        return $.param({
+            username: $('#username').val(),
+            password: $('#password').val(),
+            email: $('#email').val(),
+            mobile_no: $('#mobileNumber').val(),
+            birthday: $('#birthday').val(),
+            inv_code: $('#invitationCode').val()
+        });
+    }
+
+    $('#registrationForm').on('submit', function(e){
+        e.preventDefault();
+
+        $('.errors-block').addClass('hidden');
+
+        var request = $.ajax({
+            method: "POST",
+            url: "/api/auth/registeruser",
+            data: composeRegistrationData()
+        });
+
+        request.done(function(respData, textStatus){
+            $('#registrationForm')[0].reset();
+            console.log('respData', respData);
+            storeAuthToken(respData.auth_key);
+            storeUserId(respData.user._id);
+            window.location.replace("/web/landing");
+        });
+
+        request.fail(function( error, textStatus ) {
+            console.log( error.responseJSON );
+
+            $('.errors-block').removeClass('hidden');
+            $('.errors-block pre').html(JSON.stringify(error.responseJSON, undefined, 2))
+        });
+    });
+
+    $('#registrationForm input').on('keyup', function(){
+        $('.errors-block').addClass('hidden');
+    })
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

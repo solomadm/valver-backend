@@ -1,0 +1,97 @@
+<section class="height-100 landing-section">
+    <div class="container">
+
+        <div class="col-lg-4 col-lg-offset-4">
+
+            <div class="register-form-box">
+
+                <div class="col-md-12">
+                    <h1 style="text-align: center">Log In</h1>
+                </div>
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+
+                    <div class="forgot-password-box">
+                        <a href="#">Forgot Password</a>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-default btn-send">Sign In</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-12 errors-block hidden">
+            <h3>Errors:</h3>
+            <pre></pre>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function composeLoginData()
+    {
+        return $.param({
+            username: $('#username').val(),
+            password: $('#password').val()
+        });
+    }
+
+    $('#loginForm').on('submit', function(e){
+        e.preventDefault();
+
+        $('.errors-block').addClass('hidden');
+
+        var request = $.ajax({
+            method: "POST",
+            url: "/api/auth/login",
+            data: composeLoginData()
+        });
+
+        request.done(function(respData, textStatus){
+            $('#loginForm')[0].reset();
+            console.log('respData', respData);
+            storeAuthToken(respData.auth_key);
+            storeUserId(respData.user._id);
+            window.location.assign("/web/landing");
+        });
+
+        request.fail(function( error, textStatus ) {
+            console.log( error.responseJSON );
+
+            $('.errors-block').removeClass('hidden');
+            $('.errors-block pre').html(JSON.stringify(error.responseJSON, undefined, 2))
+        });
+    });
+
+    $('#loginForm input').on('keyup', function(){
+        $('.errors-block').addClass('hidden');
+    })
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
